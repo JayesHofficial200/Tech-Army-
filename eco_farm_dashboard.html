@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco Farm Battle</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}" alt="Eco Farm Battle Logo" />
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    🌿 Welcome to Eco Farm Battle! Complete missions, earn AgriCoins, and become a Soil Guardian!
+  </marquee>
+
+  <h1>🌾 Eco Farm Battle Dashboard</h1>
+
+  <div class="mission-card">
+    <img src="{% static 'images/logo.png' %}" class="mission-icon" alt="Mission Icon">
+    <h2>Mulching Banana Plants</h2>
+    <p>Spread dry leaves around the base to conserve water and improve soil health.</p>
+    <a href="{% url 'watch_guide' %}">📹 Watch Guide</a>
+    <a href="{% url 'submit_proof' %}">📤 Submit Proof</a>
+  </div>
+<div class="badge-showcase">
+  <h2>🎖️ Your Earned Badges</h2>
+  <div class="badge-grid">
+    {% for badge in badges %}
+      <div class="badge-card">
+        <img src="{{ badge.icon.url }}" alt="{{ badge.name }}" class="badge-icon">
+        <p><strong>{{ badge.name }}</strong></p>
+        <p>{{ badge.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+    {% empty %}
+      <p>No badges earned yet. Complete missions to unlock achievements!</p>
+    {% endfor %}
+  </div>
+</div>
+
+  <div class="leaderboard">
+    <h2>🏆 Leaderboard</h2>
+    <table>
+      <tr><th>Farmer</th><th>Points</th><th>Badge</th></tr>
+      <tr>
+        <td>Ramesh</td>
+        <td>150</td>
+        <td><span class="badge">🌟 Soil Guardian</span></td>
+      </tr>
+      <tr>
+        <td>Meera</td>
+        <td>120</td>
+        <td><span class="badge">🌿 Water Saver</span></td>
+      </tr>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

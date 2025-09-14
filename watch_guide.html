@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Watch Guide</title>
+  <link rel="stylesheet" href="{% static 'css/watch_guide.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>📹 Mission Guide: Mulching Banana Plants</h1>
+    <p>Learn how to mulch banana plants to conserve water and improve soil health.</p>
+    <div class="video-box">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="badge-unlock">
+  <img src="{% static 'images/soil_guardian_badge.png' %}" alt="Soil Guardian Badge" class="badge-icon">
+  <form method="POST" action="{% url 'mark_mission_complete' %}">
+  {% csrf_token %}
+  <button type="submit" class="complete-btn">✅ Mark as Completed</button>
+</form>
+<div id="badge-toast" class="toast">🎉 You just earned the Soil Guardian badge!</div>
+  <p class="badge-text">🎉 You've unlocked the <strong>Soil Guardian</strong> badge!</p>
+    </div>
+    <a href="{% url 'eco_farm_dashboard' %}" class="back-btn">← Back to Dashboard</a>
+  </div>
+  <script>
+  window.onload = function() {
+    const toast = document.getElementById("badge-toast");
+    if (toast) {
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 4000);
+    } 
+  };
+</script>
+</body>
+</html>

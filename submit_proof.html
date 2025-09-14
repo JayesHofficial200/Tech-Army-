@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Submit Sustainable Practice</title>
+  <link rel="stylesheet" href="{% static 'css/submit_proof.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>📤 Submit Sustainable Practice</h1>
+
+    <div class="submission-section">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="tournament">Tournament *</label>
+        <select id="tournament" name="tournament" required>
+          <option value="">-- Select Tournament --</option>
+          <option value="FarmQuest Kerala">FarmQuest Kerala</option>
+          <option value="AgriChamp 2025">AgriChamp 2025</option>
+        </select>
+
+        <label for="practice_type">Practice Type *</label>
+        <select id="practice_type" name="practice_type" required>
+          <option value="">-- Select Practice --</option>
+          <option value="Water Conservation">Water Conservation</option>
+          <option value="Soil Health">Soil Health</option>
+          <option value="Renewable Energy">Renewable Energy</option>
+          <option value="Waste Reduction">Waste Reduction</option>
+          <option value="Biodiversity">Biodiversity</option>
+          <option value="Carbon Sequestration">Carbon Sequestration</option>
+          <option value="Organic Farming">Organic Farming</option>
+          <option value="Precision Agriculture">Precision Agriculture</option>
+        </select>
+
+        <label for="description">Description *</label>
+        <textarea id="description" name="description" rows="4" required placeholder="Describe your practice..."></textarea>
+
+        <label for="impact_score">Impact Score (1–10)</label>
+        <input type="number" id="impact_score" name="impact_score" min="1" max="10" required>
+
+        <label for="evidence_url">Evidence URL (optional)</label>
+        <input type="url" id="evidence_url" name="evidence_url">
+
+        <label for="proof_file">Upload Evidence</label>
+        <input type="file" id="proof_file" name="proof_file">
+
+        <div class="points-preview">
+          <h3>🎯 Points Preview</h3>
+          <p>Base Points: <span id="base">50</span></p>
+          <p>Multiplier: <span id="multiplier">—</span></p>
+          <p><strong>Total Points: <span id="total">—</span></strong></p>
+        </div>
+
+        <button type="submit" class="submit-btn">🚀 Submit Practice</button>
+      </form>
+    </div>
+
+    <div class="practice-types">
+      <h2>🌱 Practice Types & Multipliers</h2>
+      <ul>
+        <li><strong>Water Conservation</strong> – 1.2x</li>
+        <li><strong>Soil Health</strong> – 1.3x</li>
+        <li><strong>Renewable Energy</strong> – 1.2x</li>
+        <li><strong>Waste Reduction</strong> – 1.2x</li>
+        <li><strong>Biodiversity</strong> – 1.3x</li>
+        <li><strong>Carbon Sequestration</strong> – 1.3x</li>
+        <li><strong>Organic Farming</strong> – 1.2x</li>
+        <li><strong>Precision Agriculture</strong> – 1.2x</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const multipliers = {
+      "Water Conservation": 1.2,
+      "Soil Health": 1.3,
+      "Renewable Energy": 1.2,
+      "Waste Reduction": 1.2,
+      "Biodiversity": 1.3,
+      "Carbon Sequestration": 1.3,
+      "Organic Farming": 1.2,
+      "Precision Agriculture": 1.2
+    };
+
+    const practiceSelect = document.getElementById("practice_type");
+    const basePoints = 50;
+
+    practiceSelect.addEventListener("change", () => {
+      const selected = practiceSelect.value;
+      const multiplier = multipliers[selected] || 0;
+      const total = Math.round(basePoints * multiplier);
+
+      document.getElementById("base").textContent = basePoints;
+      document.getElementById("multiplier").textContent = multiplier ? multiplier + "x" : "—";
+      document.getElementById("total").textContent = multiplier ? total : "—";
+    });
+  </script>
+    <a href="{% url 'eco_farm_dashboard' %}" class="back-btn">← Back to Dashboard</a>
+</body>
+</html>

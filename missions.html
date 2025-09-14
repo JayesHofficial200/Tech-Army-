@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FarmQuest Missions</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  <marquee behavior="scroll" direction="left" scrollamount="6" style="color:#2e7d32; font-size:1.2rem;">
+    🌿 Welcome to FarmQuest Arena! Complete missions, earn AgriCoins, and become a Soil Guardian!
+  </marquee>
+  <h1>🌱 Active Missions</h1>
+  {% for mission in missions %}
+    <div class="mission-card">
+      <img src="{% static 'images/mission-icon.png' %}" alt="Mission Icon" class="mission-icon">
+      <h2>{{ mission.title }}</h2>
+      <p>{{ mission.goal }}</p>
+      <a href="{{ mission.guide_video_url }}" target="_blank">📹 Watch Guide</a><br>
+      <a href="{% url 'submit_proof' mission.id %}">📤 Submit Proof</a>
+    </div>
+  {% endfor %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

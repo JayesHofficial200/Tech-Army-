@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eco Farm Battle</title>
+  <link rel="icon" type="image/png" href="{% static 'images/logo.png' %}" />
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    🌿 Welcome to Eco Farm Battle! Complete missions, earn AgriCoins, and become a Soil Guardian!
+  </marquee>
+
+  <h1>🌾 Eco Farm Battle Dashboard</h1>
+
+  <div class="mission-card">
+    <img src="{% static 'images/logo.png' %}" class="mission-icon" alt="Mission Icon">
+    <h2>Mulching Banana Plants</h2>
+    <p>Spread dry leaves around the base to conserve water and improve soil health.</p>
+    <a href="#">📹 Watch Guide</a>
+    <a href="#">📤 Submit Proof</a>
+  </div>
+
+  <div class="leaderboard">
+    <h2>🏆 Leaderboard</h2>
+    <table>
+      <tr><th>Farmer</th><th>Points</th><th>Badge</th></tr>
+      <tr>
+        <td>Ramesh</td>
+        <td>150</td>
+        <td><span class="badge">🌟 Soil Guardian</span></td>
+      </tr>
+      <tr>
+        <td>Meera</td>
+        <td>120</td>
+        <td><span class="badge">🌿 Water Saver</span></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

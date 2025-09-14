@@ -1,0 +1,35 @@
+.mission-card {
+  background: linear-gradient(to right, #f1f8e9, #dcedc8);
+  border-left: 6px solid #66bb6a;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+.mission-card:hover {
+  transform: scale(1.02);
+}
+
+.mission-card h2 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+.mission-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #388e3c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mission-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+}
